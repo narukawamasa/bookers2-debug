@@ -1,0 +1,6 @@
+<div>
+        <%= form_with model:[book, book_comment] do |f| %>
+          <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに", class:"w-100" %>
+          <%= f.submit "送信" %>
+          <%# 上記送信部分は模範解答と違いあり。"送信する", class:"btn btn-lg btn-base-1 mt-20 pull-right" と書いてあったが、カリキュラムの動画サイトとは異なってしまう%>
+        <% end %>
