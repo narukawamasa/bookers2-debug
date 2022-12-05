@@ -20,8 +20,8 @@
           <td id="favorite_buttons_<%= @book.id %>">
             <%= render "favorites/favorite_btn", book: @book %>
           </td>
-          <td>
-            コメント数: <%= @book.book_comments.count %>
+          <td class="book_comment">
+            <%= render "book_comments/count", book: @book %>
           </td>
             <td>
               <% if @book.user == current_user %>
@@ -35,7 +35,10 @@
             </td>
         </tr>
       </table>
-      <%= render 'book_comments/index', book: @book %>
+      <table id="book_comment_buttons_<%= @book.id %>" >
+      <%= render 'book_comments/index', book: @book, book_comment: @book_comment %>
+      </table>
+      <div>
       <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
       </div>
     </div>
