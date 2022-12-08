@@ -38,6 +38,18 @@
     <% else %>
       <%= link_to "フォローする", user_relationships_path(user.id), class:"btn btn-success", method: :post %>
     <% end %>
+    <% unless @user.id == current_user.id %>
+      <% if @is_room == true %>
+        <%= link_to "chatへ", room_path, class:"btn btn-primary btn-lg" %>
+      <% else %>
+        <%= form_with model: @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "chatを始める", class:"btn btn-primary btn-lg user-show-chat" %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
   </th>
 </div>
