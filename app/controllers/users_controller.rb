@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def show
+    @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    @user = User.find(params[:id])
     @current_user_entry = Entry.where(user_id: current_user.id)
     @user_entry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
